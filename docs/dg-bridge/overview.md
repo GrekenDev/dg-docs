@@ -35,17 +35,17 @@ Every DG script needs dg-bridge. Install and configure it first; the script's ow
 
 Each row is a value for one `Config` option. See [Configuration](configuration.md) for what each option does.
 
-{% tabs %}
-{% tab title="Core" %}
+### Core
+
 | System | Option | Supported |
 | --- | --- | --- |
 | Framework | `Config.Framework` | ESX, QBCore, QBox, ND_Core, standalone |
 | Inventory | `Config.Inventory` | ox_inventory, qb-inventory, ps-inventory, codem-inventory, origen_inventory, ESX, standalone |
 | Target | `Config.Target` | ox_target, i_interaction, qb-target, qtarget, standalone |
 | Society banking | `Config.SocietyManagement` | Renewed-Banking, qb-management, esx_society, fd_banking, wasabi_banking, crm-banking, dg-banking (coming soon) |
-{% endtab %}
 
-{% tab title="UI" %}
+### UI
+
 | System | Option | Supported |
 | --- | --- | --- |
 | Notifications | `Config.Notify` | ox_lib, QBCore, ESX, okokNotify, mythic_notify, lation_ui, ps-ui, GTA notification |
@@ -55,9 +55,9 @@ Each row is a value for one `Config` option. See [Configuration](configuration.m
 | Context menu | `Config.ContextMenu` | ox_lib, qb-menu, lation_ui |
 | Radial menu | `Config.RadialMenu` | ox_lib, qb-radialmenu |
 | NPC dialog | `Config.NPCDialog` | bl_dialog, ox_lib (context menu) |
-{% endtab %}
 
-{% tab title="Other" %}
+### Other
+
 | System | Option | Supported |
 | --- | --- | --- |
 | Dispatch | `Config.Dispatch` | ps-dispatch, cd_dispatch, qs-dispatch, standalone (notification + blip) |
@@ -65,8 +65,6 @@ Each row is a value for one `Config` option. See [Configuration](configuration.m
 | Fuel | `Config.Fuel` | ox_fuel, LegacyFuel, ps-fuel, cdn-fuel, standalone |
 | Phone | `Config.Phone` | lb-phone, GKSPhone (phone numbers only), npwd |
 | Logging | `Config.Logging` | ox_lib logger (Loki, Datadog, Fivemanage), Discord webhook |
-{% endtab %}
-{% endtabs %}
 
 Some systems can't do everything on every framework or resource, for example offline payments or gang accounts. The [Server API](server-api.md) notes where.
 

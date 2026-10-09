@@ -91,7 +91,6 @@ Bridge.notify(source, 'You received bread!', 'success', 4000)
 {% endtab %}
 {% endtabs %}
 
-{% hint style="info" %}
 Every function is also an export, but the export **returns the function** instead of calling it:
 
 ```lua
@@ -99,6 +98,7 @@ local notify = exports['dg-bridge']:notify()
 notify('Hello!', 'success')
 ```
 
+{% hint style="info" %}
 The import files do this for you, so use them where you can.
 {% endhint %}
 
