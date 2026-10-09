@@ -1,0 +1,12 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+site:
+  title: Development By Greken
+  structure:
+    - type: space
+      key: dg-shops
+      title: DG Shops
+      path: dg-shops
+      default: true
+      content:
+        directory: ./dg-shops
+        language: en
