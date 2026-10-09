@@ -5,6 +5,7 @@ Documentation for the FiveM resources by Development By Greken. GitBook publishe
 | Resource | What it is |
 | --- | --- |
 | [DG Shops](docs/dg-shops/overview.md) | Ownable shops with a modern UI, staff, stock, coupons, loyalty and analytics |
+| [dg-bridge](docs/dg-bridge/overview.md) | Free bridge between DG scripts and your framework, inventory, target, banking and UI |
 
 ## Repository layout
 

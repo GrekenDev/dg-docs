@@ -15,6 +15,16 @@
 * [Updates](dg-shops/updates.md)
 * [FAQ & troubleshooting](dg-shops/faq.md)
 
+## dg-bridge
+
+* [dg-bridge](dg-bridge/overview.md "Overview")
+* [Installation](dg-bridge/installation.md)
+* [Configuration](dg-bridge/configuration.md)
+* [Client API](dg-bridge/client-api.md)
+* [Server API](dg-bridge/server-api.md)
+* [Events](dg-bridge/events.md)
+* [FAQ & troubleshooting](dg-bridge/faq.md)
+
 ## Links
 
 * [Tebex store](https://developmentbygreken.tebex.io)

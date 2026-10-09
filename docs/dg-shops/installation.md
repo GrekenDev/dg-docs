@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* [dg-bridge](https://github.com/GrekenDev/dg-bridge) **1.2.0** or newer
+* [dg-bridge](../dg-bridge/installation.md) **1.2.0** or newer, configured for your server
 * [ox_lib](https://github.com/overextended/ox_lib)
 * [oxmysql](https://github.com/overextended/oxmysql)
 * OneSync

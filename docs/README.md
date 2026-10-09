@@ -29,7 +29,7 @@ Every DG script connects to your server through **dg-bridge**, our free bridge r
 
 ## Scripts
 
-<table data-view="cards" data-card-size="large"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>DG Shops</strong></td><td>Ownable shops with a modern UI, staff, stock, coupons, loyalty and analytics.</td><td><a href="dg-shops/overview.md">overview.md</a></td><td><a href=".gitbook/assets/card-dg-shops.png">card-dg-shops.png</a></td></tr><tr><td><strong>dg-bridge</strong></td><td>Free. Connects every DG script to your framework, inventory, target, banking and UI resources.</td><td><a href="https://github.com/GrekenDev/dg-bridge">https://github.com/GrekenDev/dg-bridge</a></td><td><a href=".gitbook/assets/card-dg-bridge.png">card-dg-bridge.png</a></td></tr></tbody></table>
+<table data-view="cards" data-card-size="large"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>DG Shops</strong></td><td>Ownable shops with a modern UI, staff, stock, coupons, loyalty and analytics.</td><td><a href="dg-shops/overview.md">overview.md</a></td><td><a href=".gitbook/assets/card-dg-shops.png">card-dg-shops.png</a></td></tr><tr><td><strong>dg-bridge</strong></td><td>Free. Connects every DG script to your framework, inventory, target, banking and UI resources.</td><td><a href="dg-bridge/overview.md">overview.md</a></td><td><a href=".gitbook/assets/card-dg-bridge.png">card-dg-bridge.png</a></td></tr></tbody></table>
 
 ## Getting started
 
@@ -37,7 +37,7 @@ Every DG script connects to your server through **dg-bridge**, our free bridge r
 {% step %}
 ### Install dg-bridge
 
-Download [dg-bridge](https://github.com/GrekenDev/dg-bridge), choose your framework and resources in its `config.lua`, and start it before any DG script.
+Download [dg-bridge](https://github.com/GrekenDev/dg-bridge), choose your framework and resources in its `config.lua`, and start it before any DG script. See [dg-bridge → Installation](dg-bridge/installation.md).
 {% endstep %}
 
 {% step %}

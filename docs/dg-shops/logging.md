@@ -1,6 +1,6 @@
 # Logging
 
-DG Shops logs through dg-bridge. The **destination** (Discord webhook, ox_lib → Loki / Datadog / Fivemanage, or nothing) is set in `dg-bridge/config.lua` under `Config.Logging`.
+DG Shops logs through dg-bridge. The **destination** (Discord webhook, ox_lib → Loki / Datadog / Fivemanage, or nothing) is set in `dg-bridge/config.lua` under `Config.Logging` (see [dg-bridge → Logging](../dg-bridge/configuration.md#logging)).
 
 **Which actions** are logged is set in `config/logs.lua`. Set any of them to `false` to stop logging it:
 

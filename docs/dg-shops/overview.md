@@ -58,14 +58,14 @@ Both editions behave the same in game.
 
 ## Compatibility
 
-DG Shops talks to your framework through [dg-bridge](https://github.com/GrekenDev/dg-bridge) (free):
+DG Shops talks to your framework through [dg-bridge](../dg-bridge/overview.md) (free):
 
 * **Frameworks:** QBox, QBCore, ESX, ND_Core
 * **Inventories:** ox_inventory, qb-inventory, ps-inventory, ESX
 * **Interaction:** ox_target, qb-target, qtarget, i_interaction or walk-up text UI
 * **Society banking:** Renewed-Banking, qb-management, esx_society, fd_banking, wasabi_banking, crm-banking, dg-banking (coming soon)
 
-Switching framework or inventory is a dg-bridge setting; nothing in DG Shops changes.
+Switching framework or inventory is a [dg-bridge setting](../dg-bridge/configuration.md); nothing in DG Shops changes.
 
 ## Get started
 
