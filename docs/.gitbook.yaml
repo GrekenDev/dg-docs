@@ -1,0 +1,17 @@
+root: ./
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md
+
+# The DG Shops pages used to live at the site root.
+redirects:
+  installation: dg-shops/installation.md
+  configuration: dg-shops/configuration.md
+  shops: dg-shops/shops.md
+  management: dg-shops/management.md
+  translations: dg-shops/translations.md
+  logging: dg-shops/logging.md
+  exports: dg-shops/exports.md
+  updates: dg-shops/updates.md
+  faq: dg-shops/faq.md

@@ -4,9 +4,9 @@ site:
   structure:
     - type: space
       key: dg-shops
-      title: DG Shops
+      title: Development By Greken
       path: dg-shops
       default: true
       content:
-        directory: ./dg-shops
+        directory: ./docs
         language: en
