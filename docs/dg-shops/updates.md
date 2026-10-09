@@ -10,6 +10,8 @@ When a new version is released, your server console shows:
 [dg-shops] Download it from https://portal.cfx.re/assets/granted-assets
 ```
 
+When you are on the latest version, it prints `[dg-shops] Up to date (1.0.0)` once instead.
+
 The check runs on start and every 6 hours. Turn it off with `Config.VersionCheck = false` in `config/main.lua`.
 
 ## Updating

@@ -9,20 +9,58 @@
 
 ## Steps
 
-1. **Download** the resource from the [Cfx portal](https://portal.cfx.re/assets/granted-assets) (Escrow) or from your Tebex purchase (Open source).
-2. **Put the `dg-shops` folder** in your resources. Keep the folder name: it is used for event names and image paths.
-3. **Start order** in `server.cfg`. DG Shops must start after its dependencies:
+{% stepper %}
+{% step %}
+### Download the resource
 
-   ```
-   ensure ox_lib
-   ensure oxmysql
-   ensure dg-bridge
-   ensure dg-shops
-   ```
+{% tabs %}
+{% tab title="Escrow" %}
+Download `dg-shops` from your [Cfx portal](https://portal.cfx.re/assets/granted-assets) under **Granted assets**.
+{% endtab %}
 
-4. **Database:** the tables are created automatically on the first start. If you prefer to import them yourself, run `sql/dg-shops.sql`.
-5. **Remove overlapping shops.** If your inventory ships its own shops (for example `ox_inventory/data/shops.lua`) at the same 24/7, LTD or Ammu-Nation coordinates, remove those entries, or remove the locations from `config/shops.lua`. Otherwise players see two shopkeepers.
-6. **Restart the server** (or `ensure dg-bridge` and then `ensure dg-shops`).
+{% tab title="Open source" %}
+Download `dg-shops` from your Tebex purchase. The UI is already built, so you can start it right away.
+{% endtab %}
+{% endtabs %}
+{% endstep %}
+
+{% step %}
+### Add it to your resources
+
+Put the `dg-shops` folder in your resources. Keep the folder name: other scripts call the exports as `exports['dg-shops']`.
+{% endstep %}
+
+{% step %}
+### Set the start order
+
+DG Shops must start after its dependencies in `server.cfg`:
+
+```
+ensure ox_lib
+ensure oxmysql
+ensure dg-bridge
+ensure dg-shops
+```
+{% endstep %}
+
+{% step %}
+### Database
+
+The tables are created automatically on the first start. If you prefer to import them yourself, run `sql/dg-shops.sql`.
+{% endstep %}
+
+{% step %}
+### Remove overlapping shops
+
+If your inventory ships its own shops (for example `ox_inventory/data/shops.lua`) at the same 24/7, LTD or Ammu-Nation coordinates, remove those entries, or remove the locations from `config/shops.lua`. Otherwise players see two shopkeepers.
+{% endstep %}
+
+{% step %}
+### Restart
+
+Restart the server (or `ensure dg-bridge` and then `ensure dg-shops`). The console prints `[dg-shops] loaded <n> shops` when everything is ready.
+{% endstep %}
+{% endstepper %}
 
 {% hint style="info" %}
 The UI is already built in both editions. You only need Node.js and `npm run build` if you change the UI source in the open-source edition.

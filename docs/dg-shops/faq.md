@@ -4,17 +4,35 @@
 
 Your inventory has its own shops at the same coordinates (for example `ox_inventory/data/shops.lua`). Remove those entries, or remove the location from `config/shops.lua`.
 
-## The shop doesn't open / "You are too far away"
+## The shop doesn't open / "You are too far from the shop."
 
 The server only accepts actions from players within `Config.MaxServerDistance` of the store. Check that the location's `coords` match where the ped stands.
+
+## Players can open the shop but can't buy
+
+The error message tells you why:
+
+| Message | Cause |
+| --- | --- |
+| "The shop is closed right now." | The owner set opening hours under **Settings**, and it's outside them (in-game time). |
+| "You are not allowed to shop here." | The location has `jobs`, and the player doesn't have the job or grade. |
+| "You are banned from this shop." | The owner or staff banned the player under **Customers**. |
 
 ## Item images or names are missing
 
 Labels and images come from your inventory through dg-bridge. Make sure the item exists in your inventory, or set `label` / `image` on the catalog entry.
 
+{% hint style="info" %}
+dg-bridge reads item labels and images from ox_inventory, qb-inventory, ps-inventory and ESX. With other inventories, set `label` and `image` on each catalog entry.
+{% endhint %}
+
+## A licence-locked item can't be bought
+
+Licences are checked through dg-bridge. ND_Core has no licence system there, so on ND_Core remove `license` from the catalog entry.
+
 ## Society payment isn't offered
 
-* `society` must be enabled in `Config.PaymentMethods` (or the location's `payments`).
+* `society` must be on in `Config.PaymentMethods`, and in the location's `payments` if it has one.
 * The player's job must be in `Config.SocietyPayments` with a high enough grade.
 * Your banking resource must be supported by dg-bridge.
 

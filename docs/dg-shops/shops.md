@@ -5,7 +5,7 @@ Shops are set up in `config/shops.lua` in two parts:
 * A **shop type** is a catalog: which items are sold, at what price, in which categories.
 * A **location** is a physical store that uses one type.
 
-Ten 24/7 stores can share the `general` type and only differ in position, name and price.
+The nine 24/7 stores in the default config all share the `general` type and only differ in position, name and price.
 
 ## Shop types
 
@@ -80,19 +80,25 @@ Config.Shops = {
 | `label` | Shop name. |
 | `coords` | `vec4(x, y, z, heading)`. The ped stands here. |
 | `logo` | Overrides the type's logo for this store only. |
-| `ped` | `{ model = '...' }` for a custom ped, or `false` for no ped. Default: `Config.DefaultPed`. |
+| `ped` | `{ model = '...', scenario = '...' }` for a custom ped, or `false` for no ped. Default: `Config.DefaultPed`. |
 | `blip` | `false` hides the blip for this store. |
 | `ownable` | `true` lets players buy the store. |
 | `price` | Buy-in price. |
 | `lockName` | `true` stops owners from renaming the store. |
 | `illegal` | Dirty money only, and the illegal theme. |
 | `jobs` | Job → minimum grade allowed to shop, e.g. `{ police = 0 }`. |
-| `payments` | Overrides `Config.PaymentMethods`, e.g. `{ cash = false, bank = true, society = true }`. |
+| `payments` | Which methods this store accepts, e.g. `{ cash = false, bank = true, society = true }`. A method must also be on in `Config.PaymentMethods`, and a method left out counts as off. |
 | `features` | Turns customer features off for this store, e.g. `{ loyalty = false, coupons = false }`. |
+
+{% hint style="danger" %}
+Changing the `id` of a location that a player owns creates a new, unowned store. The old ownership, stock and history stay under the old id, and come back if you change it back.
+{% endhint %}
 
 ## Examples
 
-**Job-locked armory with society payments:**
+{% tabs %}
+{% tab title="Police armory" %}
+Job-locked, no ped or blip, paid with bank or the police society account:
 
 ```lua
 {
@@ -104,15 +110,46 @@ Config.Shops = {
     blip = false,
     jobs = { police = 0 },
     payments = { cash = false, bank = true, society = true },
-    features = { loyalty = false, coupons = false },
+    features = { history = true, loyalty = false, presets = true, coupons = false },
 },
 ```
+{% endtab %}
 
-**Pawn shop players can buy:**
+{% tab title="Black market" %}
+Dirty money only, a custom ped, and a name the owner can't change:
+
+```lua
+{
+    id = 'blackmarket_docks',
+    type = 'blackmarket',
+    label = 'Dockside Dealer',
+    coords = vec4(1240.64, -3168.39, 7.1, 270.0),
+    blip = false,
+    ped = { model = 'g_m_y_mexgoon_02' },
+    illegal = true,
+    ownable = true,
+    price = 350000,
+    lockName = true,
+    features = { history = false, loyalty = false, presets = false, coupons = true },
+},
+```
+{% endtab %}
+
+{% tab title="Pawn shop" %}
+A pawn shop players can buy:
 
 ```lua
 { id = 'pawn_downtown', type = 'pawn', label = 'Downtown Pawn', coords = vec4(412.34, 314.81, 103.13, 207.0), ownable = true, price = 220000 },
 ```
+{% endtab %}
+{% endtabs %}
+
+## Pawn shops
+
+In a shop type with `mode = 'pawn'`, players sell the items they carry for the `sell` price of each catalog entry.
+
+* The payout is cash, or dirty money in an `illegal` shop.
+* In an **owned** pawn shop the payout comes from the shop balance, and the items go into the shop's stock. The sale is refused when the shop can't afford it or its stock is full.
 
 ## Logos
 

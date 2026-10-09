@@ -2,6 +2,8 @@
 
 Ownership, deliveries, limits and upgrades are set in `config/management.lua`. Owners and staff open the management menu from the **Manage** button in the shop.
 
+<figure><img src="../.gitbook/assets/dg-shops-finances.png" alt="The Finances page of the management menu"><figcaption><p>The management menu: Finances</p></figcaption></figure>
+
 ## Ownership
 
 ```lua
@@ -16,9 +18,13 @@ Config.Ownership = {
 }
 ```
 
-* **Buying:** a store with `ownable = true` and a `price` shows a **Buy shop** button.
-* **Selling to the city:** pays back `price × sellBackRate` plus the shop balance, and resets the store.
-* **Selling to a player:** the owner enters the buyer's server ID and a price. The buyer gets a prompt and pays from their bank. Employees and stock stay with the shop.
+* **Buying:** a store with `ownable = true` and a `price` shows a **Buy shop** button. The price is taken from `purchaseAccount`. The new owner starts with the first `baseProductSlots` products of the catalog, with no stock.
+* **Selling to the city:** pays `price × sellBackRate` (the original buy-in price) plus the shop balance into the owner's bank, and resets the store.
+* **Selling to a player:** the owner enters the buyer's server ID and a price (0 is allowed). The buyer gets a prompt for 60 seconds and pays from their bank; the seller is paid into theirs. Employees and stock stay with the shop. The buyer can't go over `maxPerPlayer`.
+
+{% hint style="warning" %}
+Selling to the city removes the shop's products, stock, employees, sales, coupons and customer data (history, loyalty points, bans). Pending deliveries are cancelled **without a refund**.
+{% endhint %}
 
 Owned shops sell only what is in stock. Owners fill the shelves by ordering from the supplier or moving items from their own inventory.
 
@@ -32,12 +38,15 @@ Config.Deliveries = {
 }
 ```
 
-Orders are paid at the wholesale price (minus the Reputation discount). Delivery timers are stored in the database, so they keep running through restarts. A pending order can be cancelled for a full refund.
+* Orders are paid at the wholesale price, minus the Reputation discount. `shop` pays from the shop balance and needs the **Pay orders with shop funds** permission; `cash` and `bank` use the ordering player's own money.
+* Pending orders count towards the stock capacity, so an order that would overfill the shop is refused.
+* Delivery timers are stored in the database, so they keep running through restarts. Online staff get a notification when an order arrives.
+* A pending order can be cancelled for a full refund to whoever paid.
 
 ## Limits
 
 ```lua
-Config.Finance = { maxTransfer = 10000000 } -- max single deposit / withdrawal
+Config.Finance = { maxTransfer = 10000000 }
 
 Config.Limits = {
     nameLength = 32,
@@ -49,6 +58,17 @@ Config.Limits = {
     maxCoupons = 40,
 }
 ```
+
+| Option | What it limits |
+| --- | --- |
+| `Config.Finance.maxTransfer` | One deposit or withdrawal from the shop balance. |
+| `nameLength` | Characters in a shop name. |
+| `codeLength` | Characters in a coupon code. |
+| `maxPrice` | A product price, and the money values of coupons and rewards. |
+| `maxSalePercent` | The discount of a sale, in %. |
+| `maxCouponPercent` | The discount of a percentage coupon or reward, in %. |
+| `maxSales` | Active sales in one shop. |
+| `maxCoupons` | Coupons in one shop. |
 
 ## Upgrades
 
@@ -78,9 +98,11 @@ capacity = {
 
 Add or remove levels freely; the UI follows the config.
 
-## Blip choices
+## Shop settings
 
-The icons and colours owners can pick for their store's map blip:
+Under **Settings** owners can rename the store (unless the location has `lockName = true`), pick the map blip and set opening hours. Outside the opening hours customers can still open the shop, but they can't buy or sell. The in-game hour is used.
+
+The icons and colours owners can pick for the blip:
 
 ```lua
 Config.BlipChoices = {
@@ -91,7 +113,9 @@ Config.BlipChoices = {
 
 ## Employees and permissions
 
-Owners hire players by server ID and choose exactly what each employee may do. There are 56 permissions in 12 groups:
+<figure><img src="../.gitbook/assets/dg-shops-employees.png" alt="The Employees page with per-employee permissions"><figcaption><p>Employees and their permissions</p></figcaption></figure>
+
+Owners hire players by server ID (the player must be online) and choose exactly what each employee may do. There are 56 permissions in 12 groups:
 
 | Group | Examples |
 | --- | --- |
@@ -108,6 +132,9 @@ Owners hire players by server ID and choose exactly what each employee may do. T
 | Analytics | Product, sale, coupon and customer insights |
 | Settings | Rename the shop, change blip and opening hours |
 
-The owner always has every permission. Employees can only grant permissions they hold themselves, and parts of the menu they can't use are hidden. New hires start with view access to the dashboard, products and stock.
+* The owner always has every permission.
+* New hires start with view access to the dashboard, products and stock.
+* Employees can only grant permissions they hold themselves, can't take away permissions they don't hold, and can't change their own.
+* Parts of the menu an employee can't use are hidden.
 
 Every permission is checked again on the server for each action.

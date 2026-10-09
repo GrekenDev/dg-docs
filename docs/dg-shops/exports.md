@@ -3,8 +3,13 @@
 ## Client
 
 ```lua
--- Opens a shop. The player must be close to it.
+-- Opens a shop. The player must be within Config.MaxServerDistance of it
+-- and, in a job-locked shop, have the job.
 exports['dg-shops']:openShop(shopId)
+
+-- Opens the management menu straight away for the owner and staff
+-- (everyone else gets the storefront).
+exports['dg-shops']:openShop(shopId, 'manage')
 
 -- Closes the shop UI.
 exports['dg-shops']:closeShop()

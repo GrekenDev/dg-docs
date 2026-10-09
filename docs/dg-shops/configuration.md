@@ -35,9 +35,9 @@ Config.Currency = {
 | Option | Default | What it does |
 | --- | --- | --- |
 | `Config.Interaction` | `'target'` | `'target'`: a target zone / ped (the target resource is set in dg-bridge). `'textui'`: walk up and press **E**. |
-| `Config.InteractDistance` | `2.0` | Distance for the text UI. |
+| `Config.InteractDistance` | `2.0` | How close a player must be to open the shop. The text UI uses this distance; target zones and peds use it plus 0.5. |
 | `Config.MaxServerDistance` | `10.0` | The server refuses any shop action from a player further away than this. |
-| `Config.DefaultPed` | shopkeeper | Ped spawned at every location that doesn't set `ped = false`. |
+| `Config.DefaultPed` | `mp_m_shopkeep_01` | Ped `model` and `scenario` used at every location that doesn't set its own `ped` (or `ped = false`). |
 
 ## Payments
 
@@ -49,7 +49,7 @@ Config.PaymentMethods = {
 }
 ```
 
-Which accounts customers may pay with. A single location can override this with `payments` (see [Shop types & locations](shops.md)). Illegal shops always use dirty money (`Config.DirtyMoneyAccount`, default `'black'`).
+Which accounts customers may pay with. A location can turn methods off for that store with `payments` (see [Shop types & locations](shops.md)). Illegal shops always use dirty money (`Config.DirtyMoneyAccount`, default `'black'`).
 
 ### Society payments
 
@@ -95,6 +95,8 @@ Config.Loyalty = {
     },
     rewards = {
         { id = 'v5', name = '5% voucher', description = '5% off one purchase', icon = 'ticket', cost = 500, percent = 5 },
+        { id = 'v10', name = '10% voucher', description = '10% off one purchase', icon = 'ticket', cost = 900, percent = 10 },
+        { id = 'v15', name = '15% voucher', description = '15% off one purchase', icon = 'ticket', cost = 1300, percent = 15 },
     },
 }
 ```

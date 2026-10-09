@@ -43,6 +43,8 @@ Texts are grouped by screen:
 | `common`, `payment`, `time` | Shared words, payment methods, durations |
 | `shop`, `browse`, `cart`, `product`, `sell`, `history`, `loyalty`, `presets` | The storefront |
 | `manage`, `dashboard`, `products`, `stock`, `sales`, `coupons`, `customers`, `employees`, `finance`, `loyalty_admin`, `upgrades`, `analytics`, `settings` | The management menu |
+| `promo`, `target`, `audience` | Who and what a sale or coupon applies to |
+| `range`, `history_filter`, `tx`, `log`, `log_detail` | Date ranges, transaction types and the stock / employee logs |
 | `error` | Error messages |
 | `permission_group`, `permission` | Names of employee permissions |
 
